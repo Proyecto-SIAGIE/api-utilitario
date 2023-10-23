@@ -25,6 +25,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api/v1');
 
+  /*
   app.use(helmet({
     frameguard: { action: 'deny' }, //establece que si alguien intenta incorporar tu sitio en un marco o iframe, el navegador debe negarlo, lo que ayuda a prevenir ataques de clickjacking.
     hidePoweredBy: true, //Esta configuración elimina o cambia el encabezado X-Powered-By en las respuestas HTTP
@@ -32,7 +33,7 @@ async function bootstrap() {
     referrerPolicy: { policy: 'same-origin' }, //Esta configuración controla qué información sobre el origen de la solicitud se incluye en la cabecera Referer de las solicitudes salientes. 
     //strictTransportSecurity: { maxAge: 31536000, includeSubDomains: true } //HSTS es una política de seguridad que obliga a los navegadores a usar siempre HTTPS para comunicarse
   }))
-
+*/
   const config = new DocumentBuilder()
     .setTitle('API Utilitario')
     .setDescription('Api de utilitario para proyecto IGED, informacion de tickets con plugin additional-fields')
@@ -40,7 +41,7 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('documentation', app, document);
+  SwaggerModule.setup('swagger', app, document);
   
   
   await app.listen(+process.env.PORT);
